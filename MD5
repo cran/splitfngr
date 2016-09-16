@@ -1,10 +1,10 @@
-22a0a869af2c58b27f21bc79e73e220f *DESCRIPTION
+69b3e976e37903d7cc57982dead5993b *DESCRIPTION
 d97ad235f266c0d9b1e7ade0dbb171d4 *NAMESPACE
-b5c932081020bf56a62f264e1236d7db *NEWS.md
+2a13b36a7465c5aed8aba5f35ee3e921 *NEWS.md
 62a136aaa480b840a72bd7ad94237e86 *R/optimization.R
-7604e1a6fe306ce7dbbef76e4035b3ca *R/splitfngr.R
+c1cb00190881e0bdaa27beadb4704f61 *R/splitfngr.R
 1673e3d99599cd29e8e231cefcb90356 *README.md
-628eebe4419d0ebb7d72a452566d01be *man/fngr.Rd
+1f5193bdf58a76ead997e84d32bfd4cd *man/fngr.Rd
 e28abd39f93c5ce535cc91c0da2dbbd4 *man/grad_share.Rd
 04356810a9d4c18b32226eaa5d33cadb *man/lbfgs_share.Rd
 de2fa4a7344c1b456996a671f248a070 *man/make_share.Rd

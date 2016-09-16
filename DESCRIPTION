@@ -1,7 +1,7 @@
 Package: splitfngr
 Type: Package
 Title: Combined Evaluation and Split Access of Functions
-Version: 0.1.0
+Version: 0.1.1
 Author: Collin Erickson
 Maintainer: Collin Erickson <collinberickson@gmail.com>
 Description: 
@@ -20,6 +20,6 @@ LazyData: TRUE
 RoxygenNote: 5.0.1
 Imports: lbfgs
 NeedsCompilation: no
-Packaged: 2016-09-14 04:23:00 UTC; cbe117
+Packaged: 2016-09-16 12:45:06 UTC; cbe117
 Repository: CRAN
-Date/Publication: 2016-09-14 18:51:14
+Date/Publication: 2016-09-16 18:15:54

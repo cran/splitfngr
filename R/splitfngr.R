@@ -66,13 +66,23 @@ grad_share <- function(fn_gr) {
 #' @export
 #'
 #' @examples
-#' tfunc <- function(x) {list(x, x+1, x+2, x+3, x+4)}
+#' tfunc <- function(x) {list(x+1, x+2, x+3, x+4, x+5)}
 #' f <- fngr(tfunc)
 #' f(1)(0)
 #' f(3)(0)
 #' f(3)(1)
 #' f(1)(23.4)
 #' f(4)()
+#'
+#' # Use same function but only recalculate when first value is called
+#' g <- fngr(tfunc, evalForNewX = FALSE, recalculate_indices = c(1))
+#' g1 <- g(1)
+#' g3 <- g(3)
+#' g1(1)
+#' g3(1)
+#' g3(11) # This won't be give expected value
+#' g1(11) # This updates all values
+#' g3(11) # This is right
 fngr <- function(func, evalForNewX=TRUE,
                  recalculate_indices = c(),
                  check_all=FALSE
@@ -89,10 +99,9 @@ fngr <- function(func, evalForNewX=TRUE,
     function(x=NULL, check_now=check, recalculate_now=recalculate,
              evalForNewX_now=evalForNewX_
              ) {
-      browser()
       if (recalculate_now ||
           (evalForNewX_now &&
-           ((is.null(env$x_last) && is.null(x)) ||
+           ((is.null(env$x_last) && !is.null(x)) ||
             (!is.null(env$x_last) && !is.null(x) && x != env$x_last)
             ))
         ) {
