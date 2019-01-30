@@ -2,11 +2,7 @@
 % Please edit documentation in R/optimization.R
 \name{optim_share}
 \alias{optim_share}
-\title{Use R's optim function but pass in a single function
-that returns both the function and gradient
-together in a list. Useful when the function and
-gradient are expensive to calculate and can be
-calculated faster together than separate.}
+\title{Use splitfngr with optim}
 \usage{
 optim_share(par, fngr, ...)
 }
@@ -34,4 +30,3 @@ calculated faster together than separate.
 quad_share <- function(x){list(sum(x^4), 4*x^3)}
 optim_share(par=c(3, -5), quad_share, method="BFGS")
 }
-

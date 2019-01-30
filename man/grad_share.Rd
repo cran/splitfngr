@@ -2,13 +2,7 @@
 % Please edit documentation in R/splitfngr.R
 \name{grad_share}
 \alias{grad_share}
-\title{Calculate function and gradient together but access separately.
-Reduces computation since they share data in calculation.
-Doesn't have to be function and gradient, can be any two
-values calculated together but accessed separately.
-Useful in optimization when function evaluation is expensive
-since the chain rule means many parts of function and gradient
-are the same.}
+\title{Split function and gradient calculation}
 \usage{
 grad_share(fn_gr)
 }
@@ -39,4 +33,3 @@ share$gr(2)
 share$fn(2)
 share$gr(2)
 }
-

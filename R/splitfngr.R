@@ -1,3 +1,5 @@
+#' Split function and gradient calculation
+#'
 #' Calculate function and gradient together but access separately.
 #' Reduces computation since they share data in calculation.
 #' Doesn't have to be function and gradient, can be any two
@@ -26,7 +28,7 @@ grad_share <- function(fn_gr) {
   env <- new.env()
   env$x_last <- NULL
   env$fn <- function(x) {
-    if (is.null(env$x_last) || env$x_last != x) {
+    if (is.null(env$x_last) || any(env$x_last != x)) {
       out <- fn_gr(x)
       env$x_last <- x
       env$fn_val <- out[[1]]
@@ -35,7 +37,7 @@ grad_share <- function(fn_gr) {
     env$fn_val
   }
   env$gr <- function(x = NULL) {
-    if (is.null(env$x_last) || env$x_last != x) {
+    if (is.null(env$x_last) || any(env$x_last != x)) {
       out <- fn_gr(x)
       env$x_last <- x
       env$fn_val <- out[[1]]
@@ -102,7 +104,7 @@ fngr <- function(func, evalForNewX=TRUE,
       if (recalculate_now ||
           (evalForNewX_now &&
            ((is.null(env$x_last) && !is.null(x)) ||
-            (!is.null(env$x_last) && !is.null(x) && x != env$x_last)
+            (!is.null(env$x_last) && !is.null(x) && any(x != env$x_last))
             ))
         ) {
         out <- func(x)
@@ -114,7 +116,7 @@ fngr <- function(func, evalForNewX=TRUE,
         if (check_now) {
           if (!is.null(x) &&
               !any(is.nan(x)) &&
-              (is.null(env$x_last) || x != env$x_last)) {
+              (is.null(env$x_last) || any(x != env$x_last))) {
             warning("gr called at different x than fn")
           }
         }
